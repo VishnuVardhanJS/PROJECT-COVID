@@ -7,6 +7,7 @@ from time import sleep # To add delay to the code
 import os # To access files in the computer
 from art import * # To add ascii art to the code
 from prettytable import PrettyTable # To print table from an dictionary
+import lxml #To read lxml files
 
 def Global_info():
 
