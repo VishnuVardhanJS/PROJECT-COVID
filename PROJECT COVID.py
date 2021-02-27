@@ -69,6 +69,8 @@ def Global_info():
             for i in range(len(con_data)):
                 if con_data[i]['CountryCode'] == usr_code:
                     del con_data[i]['Slug']
+                    del con_data[i]['ID']
+                    del con_data[i]['Premium']
                     for key, value in con_data[i].items():
                         pt = PrettyTable()#Creating a table
                         pt.field_names = con_data[i].keys()#Adding field names of the table
@@ -85,12 +87,14 @@ def Global_info():
 
         """Function to Get data by enter an country from global information """
 
-        con = input('Enter the Country which you want the details: ')
+        con = input('Enter the Country which you want the details: ').capitalize()
 
         try:
             for i in range(len(con_data)):
                 if con_data[i]['Country'] == con:
                     del con_data[i]['Slug']
+                    del con_data[i]['ID']
+                    del con_data[i]['Premium']
                     for key, value in con_data[i].items():
                         pt = PrettyTable()#Creating a table
                         pt.field_names = con_data[i].keys()#Adding field names of the table
@@ -194,8 +198,11 @@ def State_info():
 
         try:
             usr_state = input('Enter the state In India: ').title()
-            state_val = states[usr_state]
-            print('\nThere are {} cases in {}\n'.format(state_data[state_val], usr_state))
+            try:
+                print('\nThere are {} cases in {}\n'.format(state_data[usr_state.lower()], usr_state))
+            except:
+                state_val = states[usr_state]
+                print('\nThere are {} cases in {}\n'.format(state_data[state_val], usr_state))
 
         except:
             print('State Does Not Exist or check the spelling ...Try Again...')
@@ -325,10 +332,3 @@ def mainloop():
 mainloop()
 
 # End of the code
-
-
-
-
-
-
-
